@@ -5,7 +5,7 @@ import { ArrowRight } from 'phosphor-react'
 export function ClaimUsernameForm() {
   return (
     <Form as="form">
-      <TextInput size="sm" prefix="ignit.com/" placeholder="seu usuário" />
+      <TextInput size="sm" prefix="ignite.com/" placeholder="seu-usuário" />
       <Button size="sm" type="submit">
         Reservar
         <ArrowRight />
