@@ -4,6 +4,7 @@ import { ArrowRight } from 'phosphor-react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/router'
 
 const claimUsernaneZodSchema = z.object({
   username: z
@@ -17,19 +18,21 @@ const claimUsernaneZodSchema = z.object({
 
 type ClaimUsernameFormData = z.infer<typeof claimUsernaneZodSchema>
 
-async function handleClaimUsernme(data: ClaimUsernameFormData) {
-  console.log(data)
-}
-
 export function ClaimUsernameForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ClaimUsernameFormData>({
     resolver: zodResolver(claimUsernaneZodSchema),
   })
 
+  const router = useRouter()
+
+  async function handleClaimUsernme(data: ClaimUsernameFormData) {
+    const { username } = data
+    await router.push(`/register?username=${username}`)
+  }
   return (
     <>
       <Form as="form" onSubmit={handleSubmit(handleClaimUsernme)}>
@@ -39,7 +42,7 @@ export function ClaimUsernameForm() {
           placeholder="seu-usuário"
           {...register('username')}
         />
-        <Button size="sm" type="submit">
+        <Button size="sm" type="submit" disabled={isSubmitting}>
           Reservar
           <ArrowRight />
         </Button>
