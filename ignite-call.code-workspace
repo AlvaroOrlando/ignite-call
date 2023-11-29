@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.fontAliasing": "antialiased",
+		"workbench.iconTheme": "material-icon-theme",
+		"terminal.integrated.cursorBlinking": true
+		
+	}
+}
