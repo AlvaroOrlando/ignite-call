@@ -20,7 +20,7 @@ export default function Register() {
   async function handleConnectCalendar() {
     await signIn('google')
   }
-
+  console.log(session)
   return (
     <Container>
       <Header>
